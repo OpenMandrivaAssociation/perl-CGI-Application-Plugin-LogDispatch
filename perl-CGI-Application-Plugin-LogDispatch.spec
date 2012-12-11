@@ -1,23 +1,23 @@
 %define upstream_name    CGI-Application-Plugin-LogDispatch
 %define upstream_version 1.02
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Add Log::Dispatch support to CGI::Application
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Add Log::Dispatch support to CGI::Application
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(CGI::Application)
-BuildRequires: perl(Log::Dispatch)
-BuildRequires: perl(Scalar::Util)
-BuildRequires: perl(UNIVERSAL::require)
-BuildRequires: perl(Module::Build::Compat)
-BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
+BuildRequires:	perl(CGI::Application)
+BuildRequires:	perl(Log::Dispatch)
+BuildRequires:	perl(Scalar::Util)
+BuildRequires:	perl(UNIVERSAL::require)
+BuildRequires:	perl(Module::Build::Compat)
+BuildArch:	noarch
 
 %description
 CGI::Application::Plugin::LogDispatch adds logging support to your the
@@ -32,21 +32,34 @@ entries that were logged during the execution of the runmode.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Sat Apr 16 2011 Funda Wang <fwang@mandriva.org> 1.20.0-2mdv2011.0
++ Revision: 653391
+- rebuild for updated spec-helper
+
+* Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 1.20.0-1mdv2011.0
++ Revision: 405776
+- rebuild using %%perl_convert_version
+
+* Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.02-1mdv2009.1
++ Revision: 307144
+- import perl-CGI-Application-Plugin-LogDispatch
+
+
+* Wed Nov 26 2008 cpan2dist 1.02-1mdv
+- initial mdv release, generated with cpan2dist
+
