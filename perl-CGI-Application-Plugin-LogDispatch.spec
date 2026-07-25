@@ -2,14 +2,14 @@
 %define upstream_version 1.02
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	6
 
 Summary:	Add Log::Dispatch support to CGI::Application
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/CGI/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/dist/CGI-Application-Plugin-LogDispatch
+Source0:	https://cpan.metacpan.org/authors/id/C/CE/CEESHEK/CGI-Application-Plugin-LogDispatch-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
