@@ -1,15 +1,13 @@
 %define upstream_name    CGI-Application-Plugin-LogDispatch
-%define upstream_version 1.02
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	6
+Version:	1.02
+Release:	7
 
 Summary:	Add Log::Dispatch support to CGI::Application
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/CGI-Application-Plugin-LogDispatch
-Source0:	https://cpan.metacpan.org/authors/id/C/CE/CEESHEK/CGI-Application-Plugin-LogDispatch-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/C/CE/CEESHEK/CGI-Application-Plugin-LogDispatch-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -30,7 +28,7 @@ If you have the CGI::Application::Plugin::DevPopup manpage installed, a
 entries that were logged during the execution of the runmode. 
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -54,9 +52,7 @@ make test
 
 * Sat Aug 01 2009 Jérôme Quelin <jquelin@mandriva.org> 1.20.0-1mdv2011.0
 + Revision: 405776
-- rebuild using %%perl_convert_version
-
-* Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.02-1mdv2009.1
+- rebuild using %1.02 Wed Nov 26 2008 Guillaume Rousse <guillomovitch@mandriva.org> 1.02-1mdv2009.1
 + Revision: 307144
 - import perl-CGI-Application-Plugin-LogDispatch
 
